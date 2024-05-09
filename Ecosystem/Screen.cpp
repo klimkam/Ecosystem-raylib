@@ -1,12 +1,19 @@
 #include "Screen.h"
 #include "Entity.h"
+#include <list>
+#include "Plant.h"
 
 Screen::Screen()
 {
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Ecosystem");
 	SetTargetFPS(60);
 
-	Entity* entity = new Entity();
+	std::list<Plant*> m_plants;
+	Texture2D* grassTextureAtlas = new Texture2D(LoadTexture("Sprites/Grass.png"));
+	int plantsAmount = GetRandomValue(30, 50);
+	for (int i = 0; i < plantsAmount; i++) {
+		m_plants.push_back(new Plant(grassTextureAtlas));
+	}
 
 	while (WindowShouldClose() == false)
 	{
@@ -23,7 +30,10 @@ Screen::Screen()
 			m_ballSpeedY *= -1;
 		}
 
-		entity->DrawEntity();
+		for(Plant* plant : m_plants)
+		{
+			plant->DrawEntity();
+		}
 
 		DrawCircle(m_ballX, m_ballY, m_ballRadius, WHITE);
 		EndDrawing();
