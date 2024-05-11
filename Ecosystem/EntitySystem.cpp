@@ -21,9 +21,12 @@ void EntitySystem<T>::Start()
 template<class T>
 void EntitySystem<T>::Update()
 {
+
 	for (T* entity : m_entities) {
 		entity->Update();
 	}
+
+	KillEntity(GetRandomEntity());
 }
 
 template<class T>
@@ -50,7 +53,17 @@ void EntitySystem<T>::RegenerateEntities()
 template<class T>
 void EntitySystem<T>::KillEntity(T* entity)
 {
+	m_entities.remove(entity);
+	delete entity;
 	RegenerateEntities();
+}
+
+template<class T>
+T* EntitySystem<T>::GetRandomEntity()
+{
+	if (m_entities.size() <= 0) { return nullptr; }
+	auto m_entitiesIterator = m_entities.begin();
+	return *m_entitiesIterator;
 }
 
 template EntitySystem<Plant>;

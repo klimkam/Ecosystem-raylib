@@ -3,13 +3,13 @@
 
 Entity::Entity()
 {
-	SetId();
+	m_id = SetId();
 }
 
-Entity::Entity(Texture2D* atlas)
+Entity::Entity(const Texture2D* atlas)
 {
 	m_atlas = atlas;
-	SetId();
+	m_id = SetId();
 }
 
 void Entity::Start()
@@ -25,12 +25,12 @@ void Entity::Update()
 	DrawEntity();
 }
 
-int Entity::GetId()
+int const Entity::GetId()
 {
 	return m_id;
 }
 
-void Entity::DrawEntity()
+void const Entity::DrawEntity()
 {
 	Rectangle source = Rectangle{ 
 		(float)(m_currentSprite * m_textureWidth),
@@ -46,9 +46,9 @@ void Entity::DrawEntity()
 	PrintData();
 }
 
-void Entity::SetId()
+int Entity::SetId()
 {
-	m_id = NextAvailableId++;
+	return NextAvailableId++;
 }
 
 void Entity::PrintData()

@@ -31,6 +31,6 @@ private:
 	void Move();
 	void FellAsleep();
 	void WakeUp();
-	std::string GetCurrentStatus();
+	std::string const GetCurrentStatus();
 };
 

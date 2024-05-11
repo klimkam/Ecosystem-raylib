@@ -12,12 +12,12 @@ protected:
 
 	float m_entityScale = 5;
 
-	Texture2D* m_atlas;
+	const Texture2D* m_atlas;
 	int m_currentSprite = 1;
-	int m_textureWidth = 16;
+	int const m_textureWidth = 16;
 
 
-	int m_fontSize = 10;
+	int const m_fontSize = 10;
 	int m_currentLine = 0;
 
 	void virtual PrintData();
@@ -25,13 +25,13 @@ protected:
 
 public:
 	Entity();
-	Entity(Texture2D* atlas);
+	Entity(const Texture2D* atlas);
 	void virtual Start();
 	void virtual Update();
-	int GetId();
+	int const GetId();
 
 private:
-	void DrawEntity();
-	void SetId();
+	void const DrawEntity();
+	int SetId();
 };
 

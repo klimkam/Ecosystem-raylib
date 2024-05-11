@@ -3,6 +3,7 @@
 #include "Rabbit.h"
 #include "Fox.h"
 #include <list>
+#include <iterator>
 
 template<class T>
 class EntitySystem
@@ -27,5 +28,6 @@ private:
 	void GenerateEntities();
 	void RegenerateEntities();
 	void KillEntity(T* entity);
+	T* GetRandomEntity();
 };
 

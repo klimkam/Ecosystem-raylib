@@ -81,7 +81,7 @@ void Animal::WakeUp()
 	m_isSleeping = false;
 }
 
-std::string Animal::GetCurrentStatus()
+std::string const Animal::GetCurrentStatus()
 {
 	std::map<E_AnimalStatus, std::string> AnimalStatusToString = {
 		{E_AnimalStatus::Sleeping, "Sleeping..."},
