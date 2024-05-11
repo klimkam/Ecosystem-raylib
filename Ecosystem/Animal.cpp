@@ -69,22 +69,11 @@ void Animal::ClearTarget(Entity* target)
 
 void Animal::Move()
 {
-	if (m_target == nullptr) { Wonder(); return; }
+	if (m_target == nullptr) { SearchTarget(); return; }
 	MoveToTarget();
 	m_positionX += m_moveSpeedX;
 	m_positionY += m_moveSpeedY;
 
-}
-
-void Animal::Wonder()
-{
-	if (m_positionX + m_radius >= GetScreenWidth() || m_positionX - m_radius <= 0) {
-		m_moveSpeedX *= -1;
-	}
-	if (m_positionY + m_radius >= GetScreenHeight() || m_positionY - m_radius <= 0) {
-		m_moveSpeedY *= -1;
-	}
-	SearchTarget();
 }
 
 void Animal::SearchTarget()
@@ -94,11 +83,9 @@ void Animal::SearchTarget()
 
 void Animal::MoveToTarget()
 {
-	if (m_target->GetXPos() > m_positionX * m_moveSpeed) { m_moveSpeedX = m_moveSpeed; }
-	if (m_target->GetXPos() < m_positionX * m_moveSpeed) { m_moveSpeedX = -1 * m_moveSpeed; }
-
-	if (m_target->GetYPos() > m_positionY * m_moveSpeed) { m_moveSpeedY = m_moveSpeed; }
-	if (m_target->GetYPos() < m_positionY * m_moveSpeed) { m_moveSpeedY = -1 * m_moveSpeed; }
+	if (m_target == nullptr) { return; }
+	m_moveSpeedX = (m_target->GetXPos() - m_positionX) >= 0 ? m_moveSpeed : -m_moveSpeed;
+	m_moveSpeedY = (m_target->GetYPos() - m_positionY) >= 0 ? m_moveSpeed : -m_moveSpeed;
 	
 	CheckCollision();
 }

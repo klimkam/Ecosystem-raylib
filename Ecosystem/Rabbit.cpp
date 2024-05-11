@@ -10,5 +10,5 @@ Rabbit::Rabbit(Texture2D* texture)
 void Rabbit::Start()
 {
 	Animal::Start();
-	m_maxFatigue = GetRandomValue(10, 20);
+	m_maxFatigue = GetRandomValue(5, 10);
 }

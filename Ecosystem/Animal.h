@@ -30,10 +30,9 @@ public:
 
 private:
 	void Move();
-	void Wonder();
-	void SearchTarget();
+	void virtual SearchTarget();
 	void MoveToTarget();
-	void CheckCollision();
+	void virtual CheckCollision();
 	void FellAsleep();
 	void WakeUp();
 	std::string const GetCurrentStatus();
