@@ -3,7 +3,9 @@
 
 class Entity
 {
+	int static unsigned NextAvailableId;
 protected:
+	int m_id;
 	float m_positionX = GetScreenWidth()/2;
 	float m_positionY = GetScreenHeight()/2;
 
@@ -19,8 +21,10 @@ public:
 	Entity(Texture2D* atlas);
 	void virtual Start();
 	void virtual Update();
+	int GetId();
 
 private:
 	void DrawEntity();
+	void SetId();
 };
 

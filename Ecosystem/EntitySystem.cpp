@@ -1,4 +1,5 @@
 #include "EntitySystem.h"
+#include<ostream>
 
 template<class T>
 EntitySystem<T>::EntitySystem()
@@ -36,7 +37,9 @@ void EntitySystem<T>::GenerateEntities()
 {
 	m_startEntityCount = GetRandomValue(m_minStartEntityCount, m_maxStartEntityCount);
 	for (int i = 0; i < m_startEntityCount; i++) {
-		m_entities.push_back(new T(m_textureAtlas));
+		T* newEntity = new T(m_textureAtlas);
+		m_entities.push_back(newEntity);
+		std::cout << "Entity id is: " << newEntity->GetId() << std::endl;
 	}
 }
 
@@ -46,7 +49,9 @@ void EntitySystem<T>::RegenerateEntities()
 	if (m_entities.size() > m_minimalEntityCount) { return; }
 
 	for (int i = 0; i < m_regenerateEntityCount; i++) {
-		m_entities.push_back(new T(m_textureAtlas));
+		T* newEntity = new T(m_textureAtlas);
+		m_entities.push_back(newEntity);
+		std::cout << "Entity id is: " << newEntity->GetId() << std::endl;
 	}
 }
 
