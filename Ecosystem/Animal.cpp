@@ -1,6 +1,7 @@
 #include "Animal.h"
 #include "Screen.h"
 #include <map>
+#include "raymath.h"
 
 Animal::Animal()
 {
@@ -35,8 +36,7 @@ void Animal::Start()
 {
 	Entity::Start();
 
-	m_moveSpeedX = GetRandomValue(-5, 5);
-	m_moveSpeedY = GetRandomValue(-5, 5);
+	m_moveSpeed = GetRandomValue(1, 2);
 
 	Vector3 position = { m_positionX, m_positionY };
 }
@@ -67,13 +67,35 @@ void Animal::ClearTarget(Entity* target)
 	m_target = nullptr;
 }
 
+float const Animal::GetOrientationX()
+{
+	return m_moveOrientationX;
+}
+
+float const Animal::GetOrientationY()
+{
+	return m_moveOrientationY;
+}
+
 void Animal::Move()
 {
 	if (m_target == nullptr) { SearchTarget(); return; }
-	MoveToTarget();
-	m_positionX += m_moveSpeedX;
-	m_positionY += m_moveSpeedY;
 
+	if (m_animalStatus == E_AnimalStatus::SearchingFood) {
+		MoveToTarget();
+	}
+
+	if (m_animalStatus == E_AnimalStatus::RunningAway) {
+		RunAway();
+	}
+
+	m_positionX += m_moveOrientationX * m_moveSpeed;
+	m_positionY += m_moveOrientationY * m_moveSpeed;
+
+	m_positionX = Clamp(m_positionX, 0 + m_textureWidth, GetScreenWidth() - m_textureWidth);
+	m_positionY = Clamp(m_positionY, 0 + m_textureWidth, GetScreenHeight() - m_textureWidth);
+
+	
 }
 
 void Animal::SearchTarget()
@@ -84,8 +106,8 @@ void Animal::SearchTarget()
 void Animal::MoveToTarget()
 {
 	if (m_target == nullptr) { return; }
-	m_moveSpeedX = (m_target->GetXPos() - m_positionX) >= 0 ? m_moveSpeed : -m_moveSpeed;
-	m_moveSpeedY = (m_target->GetYPos() - m_positionY) >= 0 ? m_moveSpeed : -m_moveSpeed;
+	m_moveOrientationX = (m_target->GetXPos() - m_positionX) >= 0 ? 1 : -1;
+	m_moveOrientationY = (m_target->GetYPos() - m_positionY) >= 0 ? 1 : -1;
 	
 	CheckCollision();
 }
@@ -108,11 +130,16 @@ void Animal::CheckCollision()
 	}
 }
 
+void Animal::RunAway()
+{
+}
+
 void Animal::FellAsleep()
 {
 	m_animalStatus = E_AnimalStatus::Sleeping;
 	m_fatigueSpeed *= -3;
 	m_isSleeping = true;
+	ClearTarget(m_target);
 }
 
 void Animal::WakeUp()

@@ -14,5 +14,6 @@ private:
 	void Animate();
 	void SearchTarget() override;
 	void CheckCollision() override;
+	void virtual FellAsleep();
 };
 

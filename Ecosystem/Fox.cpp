@@ -37,6 +37,7 @@ void Fox::Animate()
 void Fox::SearchTarget()
 {
 	m_target = Screen::s_rabbitSystem->ClosestToThePoint(this);
+	((Rabbit*)m_target)->SetHuntedBy(this);
 }
 
 void Fox::CheckCollision()
@@ -54,5 +55,17 @@ void Fox::CheckCollision()
 		}
 		Screen::s_rabbitSystem->KillEntity((Rabbit*)m_target);
 		Screen::s_foxSystem->ClearTargets(m_target);
+	}
+}
+
+void Fox::FellAsleep()
+{
+	m_animalStatus = E_AnimalStatus::Sleeping;
+	m_fatigueSpeed *= -3;
+	m_isSleeping = true;
+	ClearTarget(m_target);
+
+	if (m_target != nullptr) {
+		m_target->ClearTarget(this);
 	}
 }

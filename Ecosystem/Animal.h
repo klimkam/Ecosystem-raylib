@@ -6,8 +6,8 @@ class Animal : public Entity
 {
 protected:
 	float m_moveSpeed = 1;
-	float m_moveSpeedX = m_moveSpeed;
-	float m_moveSpeedY = m_moveSpeed;
+	float m_moveOrientationX = m_moveSpeed;
+	float m_moveOrientationY = m_moveSpeed;
 
 	E_AnimalStatus m_animalStatus = E_AnimalStatus::SearchingFood;
 
@@ -28,12 +28,16 @@ public:
 	void PrintData() override;
 	void ClearTarget(Entity* target);
 
+	float const GetOrientationX();
+	float const GetOrientationY();
+
 private:
 	void Move();
 	void virtual SearchTarget();
-	void MoveToTarget();
+	void virtual MoveToTarget();
 	void virtual CheckCollision();
-	void FellAsleep();
+	void virtual RunAway();
+	void virtual FellAsleep();
 	void WakeUp();
 	std::string const GetCurrentStatus();
 };
