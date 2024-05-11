@@ -45,6 +45,12 @@
     <ClCompile Include="Animal.cpp">
       <Filter>Source Files\Entity\Animal</Filter>
     </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enums.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Screen.h">
@@ -61,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Animal.h">
       <Filter>Header Files\Entity\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="Rabbit.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

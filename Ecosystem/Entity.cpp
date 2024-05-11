@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include <string>
 
 Entity::Entity()
 {
@@ -42,9 +43,22 @@ void Entity::DrawEntity()
 		source.width * m_entityScale,
 		source.height * m_entityScale };
 	DrawTexturePro((*m_atlas), source, dest, Vector2{dest.width/2, dest.height / 2 }, 0, WHITE);
+	PrintData();
 }
 
 void Entity::SetId()
 {
 	m_id = NextAvailableId++;
+}
+
+void Entity::PrintData()
+{
+	m_currentLine = 0;
+	const char* entityId = TextFormat("Id: %i", m_id);
+	PrintLine(entityId);
+}
+
+void Entity::PrintLine(const char* textLine)
+{
+	DrawText(textLine, m_positionX - sizeof(textLine), m_positionY - 20 - m_fontSize * m_currentLine++, m_fontSize, RED);
 }

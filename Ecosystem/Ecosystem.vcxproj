@@ -130,7 +130,9 @@
     <ClCompile Include="Animal.cpp" />
     <ClCompile Include="Ecosystem.cpp" />
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Enums.h" />
     <ClCompile Include="Plant.cpp" />
+    <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="EntitySystem.cpp" />
   </ItemGroup>
@@ -138,6 +140,7 @@
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Plant.h" />
+    <ClInclude Include="Rabbit.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="EntitySystem.h" />
   </ItemGroup>

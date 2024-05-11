@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include <iostream>
 
 class Entity
 {
@@ -15,6 +16,12 @@ protected:
 	int m_textureWidth = 16;
 
 	Texture2D* m_atlas;
+
+	int m_fontSize = 10;
+	int m_currentLine = 0;
+
+	void virtual PrintData();
+	void PrintLine(const char* textLine);
 
 public:
 	Entity();

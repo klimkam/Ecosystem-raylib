@@ -10,7 +10,7 @@ Screen::Screen()
 	Texture2D* rabbitTextureAtlas = new Texture2D(LoadTexture("Sprites/Rabbit.png"));
 
 	EntitySystem<Plant>* plantSystem = new EntitySystem<Plant>(30, 50, 10, 20, grassTextureAtlas);
-	EntitySystem<Animal>* rabbitSystem = new EntitySystem<Animal>(5, 8, 3, 3, rabbitTextureAtlas);
+	EntitySystem<Rabbit>* rabbitSystem = new EntitySystem<Rabbit>(5, 8, 3, 3, rabbitTextureAtlas);
 
 	while (WindowShouldClose() == false)
 	{
