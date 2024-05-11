@@ -5,6 +5,7 @@
 #include "Plant.h"
 #include "Animal.h"
 #include "Rabbit.h"
+#include "Fox.h"
 #include <iostream>
 
 template<class T>

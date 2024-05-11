@@ -45,11 +45,14 @@
     <ClCompile Include="Animal.cpp">
       <Filter>Source Files\Entity\Animal</Filter>
     </ClCompile>
-    <ClCompile Include="Rabbit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Enums.h">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rabbit.cpp">
+      <Filter>Source Files\Entity\Animal</Filter>
+    </ClCompile>
+    <ClCompile Include="Fox.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +72,9 @@
       <Filter>Header Files\Entity\Animal</Filter>
     </ClInclude>
     <ClInclude Include="Rabbit.h">
+      <Filter>Header Files\Entity\Animal</Filter>
+    </ClInclude>
+    <ClInclude Include="Fox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -82,6 +88,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Sprites\Rabbit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\Fox.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

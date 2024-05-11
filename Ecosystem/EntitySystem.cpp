@@ -58,3 +58,4 @@ void EntitySystem<T>::KillEntity(T* entity)
 
 template EntitySystem<Plant>;
 template EntitySystem<Rabbit>;
+template EntitySystem<Fox>;

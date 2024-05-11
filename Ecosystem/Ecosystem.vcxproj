@@ -131,6 +131,7 @@
     <ClCompile Include="Ecosystem.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Enums.h" />
+    <ClCompile Include="Fox.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -139,6 +140,7 @@
   <ItemGroup>
     <ClInclude Include="Animal.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="Fox.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="Screen.h" />
@@ -148,6 +150,7 @@
     <None Include="Sprites\Grass.aseprite" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Sprites\Fox.png" />
     <Image Include="Sprites\Grass.png" />
     <Image Include="Sprites\Rabbit.png" />
   </ItemGroup>
