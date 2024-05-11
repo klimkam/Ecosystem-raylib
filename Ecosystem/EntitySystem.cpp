@@ -34,7 +34,6 @@ void EntitySystem<T>::GenerateEntities()
 	for (int i = 0; i < m_startEntityCount; i++) {
 		T* newEntity = new T(m_textureAtlas);
 		m_entities.push_back(newEntity);
-		std::cout << "Entity id is: " << newEntity->GetId() << std::endl;
 	}
 }
 
@@ -46,7 +45,6 @@ void EntitySystem<T>::RegenerateEntities()
 	for (int i = 0; i < m_regenerateEntityCount; i++) {
 		T* newEntity = new T(m_textureAtlas);
 		m_entities.push_back(newEntity);
-		std::cout << "Entity id is: " << newEntity->GetId() << std::endl;
 	}
 }
 

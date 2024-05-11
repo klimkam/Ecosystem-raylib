@@ -60,5 +60,5 @@ void Entity::PrintData()
 
 void Entity::PrintLine(const char* textLine)
 {
-	DrawText(textLine, m_positionX - sizeof(textLine), m_positionY - 20 - m_fontSize * m_currentLine++, m_fontSize, RED);
+	DrawText(textLine, m_positionX - sizeof(textLine), m_positionY - 30 - m_fontSize * m_currentLine++, m_fontSize, RED);
 }
