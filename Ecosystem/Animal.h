@@ -4,6 +4,7 @@
 
 class Animal : public Entity
 {
+protected:
 	float m_moveSpeed = 1;
 	float m_moveSpeedX = m_moveSpeed;
 	float m_moveSpeedY = m_moveSpeed;

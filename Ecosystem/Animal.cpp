@@ -26,7 +26,6 @@ void Animal::Update()
 		WakeUp();
 	}
 
-	std::cout << m_currentFatigue << std::endl;
 	m_currentFatigue += (GetFrameTime() * m_fatigueSpeed);
 }
 
@@ -43,7 +42,13 @@ void Animal::PrintData()
 	Entity::PrintData();
 
 	const char* fatigueLevel = TextFormat("Fatigue: %i", (int)m_currentFatigue);
+	const char* fatigueMaxLevel = TextFormat("Max Fatigue: %i", (int)m_maxFatigue);
+	const char* fatigueSpeed = TextFormat("Fatigue Speed: %i", (int)m_fatigueSpeed);
+
+
+	PrintLine(fatigueMaxLevel);
 	PrintLine(fatigueLevel);
+	PrintLine(fatigueSpeed);
 }
 
 void Animal::Move()
