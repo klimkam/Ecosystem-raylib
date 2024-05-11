@@ -131,17 +131,20 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Plant.cpp" />
     <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="EntitySystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Plant.h" />
     <ClInclude Include="Screen.h" />
+    <ClInclude Include="EntitySystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sprites\Grass.aseprite" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Sprites\Grass.png" />
+    <Image Include="Sprites\Rabbit.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

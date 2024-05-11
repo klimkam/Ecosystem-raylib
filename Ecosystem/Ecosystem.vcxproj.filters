@@ -27,6 +27,9 @@
     <ClCompile Include="Plant.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EntitySystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Screen.h">
@@ -38,6 +41,9 @@
     <ClInclude Include="Plant.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EntitySystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Sprites\Grass.aseprite">
@@ -46,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Sprites\Grass.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Sprites\Rabbit.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

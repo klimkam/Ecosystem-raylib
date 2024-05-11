@@ -5,8 +5,19 @@ Entity::Entity()
 	Start();
 }
 
+Entity::Entity(Texture2D* atlas)
+{
+	m_atlas = atlas;
+	Start();
+}
+
 void Entity::Start()
 {
+}
+
+void Entity::Update()
+{
+	DrawEntity();
 }
 
 void Entity::DrawEntity()

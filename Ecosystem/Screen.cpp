@@ -1,7 +1,4 @@
 #include "Screen.h"
-#include "Entity.h"
-#include <list>
-#include "Plant.h"
 
 Screen::Screen()
 {
@@ -10,10 +7,9 @@ Screen::Screen()
 
 	std::list<Plant*> m_plants;
 	Texture2D* grassTextureAtlas = new Texture2D(LoadTexture("Sprites/Grass.png"));
-	int plantsAmount = GetRandomValue(30, 50);
-	for (int i = 0; i < plantsAmount; i++) {
-		m_plants.push_back(new Plant(grassTextureAtlas));
-	}
+
+	EntitySystem<Plant>* plantSystem;
+	plantSystem = new EntitySystem<Plant>(30, 50, 10, 20, grassTextureAtlas);
 
 	while (WindowShouldClose() == false)
 	{
@@ -30,10 +26,7 @@ Screen::Screen()
 			m_ballSpeedY *= -1;
 		}
 
-		for(Plant* plant : m_plants)
-		{
-			plant->DrawEntity();
-		}
+		plantSystem->Update();
 
 		DrawCircle(m_ballX, m_ballY, m_ballRadius, WHITE);
 		EndDrawing();

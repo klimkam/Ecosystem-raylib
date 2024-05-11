@@ -16,9 +16,11 @@ protected:
 
 public:
 	Entity();
-	void DrawEntity();
+	Entity(Texture2D* atlas);
 	void virtual Start();
+	void virtual Update();
 
 private:
+	void DrawEntity();
 };
 
