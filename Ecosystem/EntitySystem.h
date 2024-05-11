@@ -4,6 +4,7 @@
 #include "Fox.h"
 #include <list>
 #include <iterator>
+#include <cmath>
 
 template<class T>
 class EntitySystem
@@ -29,5 +30,6 @@ private:
 	void RegenerateEntities();
 	void KillEntity(T* entity);
 	T* GetRandomEntity();
+	T* ClosestToThePoint(float posX, float posY);
 };
 

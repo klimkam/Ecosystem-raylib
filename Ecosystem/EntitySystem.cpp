@@ -21,12 +21,9 @@ void EntitySystem<T>::Start()
 template<class T>
 void EntitySystem<T>::Update()
 {
-
 	for (T* entity : m_entities) {
 		entity->Update();
 	}
-
-	KillEntity(GetRandomEntity());
 }
 
 template<class T>
@@ -53,6 +50,7 @@ void EntitySystem<T>::RegenerateEntities()
 template<class T>
 void EntitySystem<T>::KillEntity(T* entity)
 {
+	T* tempEntity = entity;
 	m_entities.remove(entity);
 	delete entity;
 	RegenerateEntities();
@@ -63,6 +61,27 @@ T* EntitySystem<T>::GetRandomEntity()
 {
 	if (m_entities.size() <= 0) { return nullptr; }
 	auto m_entitiesIterator = m_entities.begin();
+	return *m_entitiesIterator;
+}
+
+template<class T>
+T* EntitySystem<T>::ClosestToThePoint(float posX, float posY)
+{
+	auto m_entitiesIterator = m_entities.begin();
+	T* tempEntity = nullptr;
+	float currentDistance = 1000;
+
+	while (m_entitiesIterator != m_entities.end()) {
+		m_entitiesIterator++;
+
+		float diffX = posX - tempEntity->GetXPos();
+		float diffY = posY - tempEntity->GetYPos();
+		float tempCurrentDistance = std::sqrt(diffX * diffX + diffY * diffY);
+		if (currentDistance > tempCurrentDistance) {
+			tempEntity = *m_entitiesIterator;
+		}
+	}
+
 	return *m_entitiesIterator;
 }
 

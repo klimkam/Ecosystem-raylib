@@ -36,6 +36,8 @@ void Animal::Start()
 
 	m_moveSpeedX = GetRandomValue(-5, 5);
 	m_moveSpeedY = GetRandomValue(-5, 5);
+
+	Vector3 position = { m_positionX, m_positionY };
 }
 
 void Animal::PrintData()
@@ -56,15 +58,25 @@ void Animal::PrintData()
 
 void Animal::Move()
 {
+	if(m_target == nullptr) Wonder();
 	m_positionX += m_moveSpeedX;
 	m_positionY += m_moveSpeedY;
+}
 
+void Animal::Wonder()
+{
 	if (m_positionX + m_radius >= GetScreenWidth() || m_positionX - m_radius <= 0) {
 		m_moveSpeedX *= -1;
 	}
 	if (m_positionY + m_radius >= GetScreenHeight() || m_positionY - m_radius <= 0) {
 		m_moveSpeedY *= -1;
 	}
+}
+
+void Animal::MoveToTarget(Entity target)
+{
+	m_moveSpeedX *= (m_positionX - target.GetXPos());
+	m_moveSpeedY *= (m_positionY - target.GetYPos());
 }
 
 void Animal::FellAsleep()

@@ -7,6 +7,9 @@ class Entity
 	int static unsigned NextAvailableId;
 protected:
 	int m_id;
+
+	float m_radius = 16;
+
 	float m_positionX = GetScreenWidth()/2;
 	float m_positionY = GetScreenHeight()/2;
 
@@ -24,11 +27,15 @@ protected:
 	void PrintLine(const char* textLine);
 
 public:
+	~Entity();
 	Entity();
 	Entity(const Texture2D* atlas);
 	void virtual Start();
 	void virtual Update();
+
 	int const GetId();
+	float const GetXPos();
+	float const GetYPos();
 
 private:
 	void const DrawEntity();
