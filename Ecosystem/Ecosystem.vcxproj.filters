@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{4eb3539e-95c9-49c2-9d32-3c996bc48b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Animal">
+      <UniqueIdentifier>{bd36d7b4-344f-4074-b013-5958c071f172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{b3dca95b-c073-4f46-96c3-a57d360fcaef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Animal">
+      <UniqueIdentifier>{302a7f98-389a-4610-acf4-f4a6eacacebe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ecosystem.cpp">
@@ -21,34 +33,34 @@
     <ClCompile Include="Screen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Plant.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="EntitySystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Plant.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
     <ClCompile Include="Animal.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entity\Animal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Screen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Plant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EntitySystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Plant.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
     <ClInclude Include="Animal.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entity\Animal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
