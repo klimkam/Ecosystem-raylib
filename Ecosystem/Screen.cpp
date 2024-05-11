@@ -5,7 +5,6 @@ Screen::Screen()
 	InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Ecosystem");
 	SetTargetFPS(60);
 
-	std::list<Plant*> m_plants;
 	Texture2D* grassTextureAtlas = new Texture2D(LoadTexture("Sprites/Grass.png"));
 	Texture2D* rabbitTextureAtlas = new Texture2D(LoadTexture("Sprites/Rabbit.png"));
 	Texture2D* foxTextureAtlas = new Texture2D(LoadTexture("Sprites/Fox.png"));

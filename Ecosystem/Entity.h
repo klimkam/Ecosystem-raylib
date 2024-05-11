@@ -12,10 +12,10 @@ protected:
 
 	float m_entityScale = 5;
 
+	Texture2D* m_atlas;
 	int m_currentSprite = 1;
 	int m_textureWidth = 16;
 
-	Texture2D* m_atlas;
 
 	int m_fontSize = 10;
 	int m_currentLine = 0;

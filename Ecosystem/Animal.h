@@ -11,7 +11,7 @@ protected:
 
 	float m_radius = 16;
 
-	E_AnimalStatus m_animalStatus = E_AnimalStatus::Count;
+	E_AnimalStatus m_animalStatus = E_AnimalStatus::SearchingFood;
 
 	float m_currentFatigue = 0;
 	float m_maxFatigue = 10;
@@ -31,5 +31,6 @@ private:
 	void Move();
 	void FellAsleep();
 	void WakeUp();
+	std::string GetCurrentStatus();
 };
 

@@ -1,12 +1,8 @@
 #pragma once
-#include "Entity.h"
-#include "raylib.h"
-#include <list>
 #include "Plant.h"
-#include "Animal.h"
 #include "Rabbit.h"
 #include "Fox.h"
-#include <iostream>
+#include <list>
 
 template<class T>
 class EntitySystem

@@ -1,4 +1,5 @@
 #include "Animal.h"
+#include <map>
 
 Animal::Animal()
 {
@@ -44,11 +45,13 @@ void Animal::PrintData()
 	const char* fatigueLevel = TextFormat("Fatigue: %i", (int)m_currentFatigue);
 	const char* fatigueMaxLevel = TextFormat("Max Fatigue: %i", (int)m_maxFatigue);
 	const char* fatigueSpeed = TextFormat("Fatigue Speed: %i", (int)m_fatigueSpeed);
+	const char* animalStatus = TextFormat(GetCurrentStatus().c_str());
 
 
 	PrintLine(fatigueMaxLevel);
 	PrintLine(fatigueLevel);
 	PrintLine(fatigueSpeed);
+	PrintLine(animalStatus);
 }
 
 void Animal::Move()
@@ -76,4 +79,15 @@ void Animal::WakeUp()
 	m_animalStatus = E_AnimalStatus::SearchingFood;
 	m_fatigueSpeed /= -3;
 	m_isSleeping = false;
+}
+
+std::string Animal::GetCurrentStatus()
+{
+	std::map<E_AnimalStatus, std::string> AnimalStatusToString = {
+		{E_AnimalStatus::Sleeping, "Sleeping..."},
+		{E_AnimalStatus::SearchingFood, "Searching Food..."},
+		{E_AnimalStatus::RunningAway, "Running Away..."},
+	};
+
+	return AnimalStatusToString[m_animalStatus];
 }
