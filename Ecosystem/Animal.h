@@ -26,11 +26,14 @@ public:
 	void Start() override;
 
 	void PrintData() override;
+	void ClearTarget(Entity* target);
 
 private:
 	void Move();
 	void Wonder();
-	void MoveToTarget(Entity target);
+	void SearchTarget();
+	void MoveToTarget();
+	void CheckCollision();
 	void FellAsleep();
 	void WakeUp();
 	std::string const GetCurrentStatus();

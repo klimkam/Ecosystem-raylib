@@ -23,6 +23,8 @@ protected:
 	int const m_fontSize = 10;
 	int m_currentLine = 0;
 
+	float m_nutritionLevel = 5;
+
 	void virtual PrintData();
 	void PrintLine(const char* textLine);
 
@@ -36,7 +38,8 @@ public:
 	int const GetId();
 	float const GetXPos();
 	float const GetYPos();
-
+	void virtual ClearTarget(Entity* target) {};
+	float const GetNutritionLevel();
 private:
 	void const DrawEntity();
 	int SetId();

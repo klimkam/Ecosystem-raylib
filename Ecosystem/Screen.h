@@ -5,9 +5,9 @@
 #include "Plant.h"
 #include "EntitySystem.h"
 #include "Animal.h"
+
 class Screen
 {
-
 	const int SCREEN_WIDTH = 800;
 	const int SCREEN_HEIGHT = 600;
 
@@ -21,7 +21,15 @@ class Screen
 
 	int m_ballRadius = 15;
 
+	static Texture2D* s_grassTextureAtlas;
+	static Texture2D* s_rabbitTextureAtlas;
+	static Texture2D* s_foxTextureAtlas;
+
 public :
 	Screen();
+
+	static EntitySystem<Plant>* s_plantSystem;
+	static EntitySystem<Rabbit>* s_rabbitSystem;
+	static EntitySystem<Fox>* s_foxSystem;
 };
 

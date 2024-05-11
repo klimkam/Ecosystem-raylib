@@ -1,4 +1,5 @@
 #include "Animal.h"
+#include "Screen.h"
 #include <map>
 
 Animal::Animal()
@@ -49,6 +50,10 @@ void Animal::PrintData()
 	const char* fatigueSpeed = TextFormat("Fatigue Speed: %i", (int)m_fatigueSpeed);
 	const char* animalStatus = TextFormat(GetCurrentStatus().c_str());
 
+	if (m_target != nullptr) {
+		const char* objectId = TextFormat("Target ID: %i", m_target->GetId());
+		PrintLine(objectId);
+	}
 
 	PrintLine(fatigueMaxLevel);
 	PrintLine(fatigueLevel);
@@ -56,11 +61,19 @@ void Animal::PrintData()
 	PrintLine(animalStatus);
 }
 
+void Animal::ClearTarget(Entity* target)
+{
+	if (m_target != target) { return; }
+	m_target = nullptr;
+}
+
 void Animal::Move()
 {
-	if(m_target == nullptr) Wonder();
+	if (m_target == nullptr) { Wonder(); return; }
+	MoveToTarget();
 	m_positionX += m_moveSpeedX;
 	m_positionY += m_moveSpeedY;
+
 }
 
 void Animal::Wonder()
@@ -71,12 +84,41 @@ void Animal::Wonder()
 	if (m_positionY + m_radius >= GetScreenHeight() || m_positionY - m_radius <= 0) {
 		m_moveSpeedY *= -1;
 	}
+	SearchTarget();
 }
 
-void Animal::MoveToTarget(Entity target)
+void Animal::SearchTarget()
 {
-	m_moveSpeedX *= (m_positionX - target.GetXPos());
-	m_moveSpeedY *= (m_positionY - target.GetYPos());
+	m_target = Screen::s_plantSystem->ClosestToThePoint(this);
+}
+
+void Animal::MoveToTarget()
+{
+	if (m_target->GetXPos() > m_positionX * m_moveSpeed) { m_moveSpeedX = m_moveSpeed; }
+	if (m_target->GetXPos() < m_positionX * m_moveSpeed) { m_moveSpeedX = -1 * m_moveSpeed; }
+
+	if (m_target->GetYPos() > m_positionY * m_moveSpeed) { m_moveSpeedY = m_moveSpeed; }
+	if (m_target->GetYPos() < m_positionY * m_moveSpeed) { m_moveSpeedY = -1 * m_moveSpeed; }
+	
+	CheckCollision();
+}
+
+void Animal::CheckCollision()
+{
+	float dx = (m_target->GetXPos() - m_positionX);
+	float dy = (m_target->GetYPos() - m_positionY);
+	float distance = std::sqrt(dx*dx + dy*dy);
+
+	if (distance < 10) {
+		if (m_currentFatigue - m_target->GetNutritionLevel() <= 0) {
+			m_currentFatigue = 0;
+		}
+		else {
+			m_currentFatigue -= m_target->GetNutritionLevel();
+		}
+		Screen::s_plantSystem->KillEntity((Plant*)m_target);
+		Screen::s_rabbitSystem->ClearTargets(m_target);
+	}
 }
 
 void Animal::FellAsleep()

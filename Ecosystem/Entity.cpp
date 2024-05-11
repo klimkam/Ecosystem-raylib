@@ -54,6 +54,11 @@ float const Entity::GetYPos()
 	return m_positionY;
 }
 
+float const Entity::GetNutritionLevel()
+{
+	return m_nutritionLevel;
+}
+
 void const Entity::DrawEntity()
 {
 	Rectangle source = Rectangle{ 

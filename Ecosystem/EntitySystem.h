@@ -21,15 +21,18 @@ class EntitySystem
 	int m_regenerateEntityCount = 7;
 
 public:
+	EntitySystem() {};
 	EntitySystem(int minStartEntityCount, int maxStartEntityCount, int minimalEntityCount, int regenerateEntityCount, Texture2D* textureAtlas);
 	void Start();
 	void Update();
+	T* GetRandomEntity();
+	T* ClosestToThePoint(Entity* fromEntity);
+	void KillEntity(T* entity);
+
+	void ClearTargets(Entity* target);
 
 private:
 	void GenerateEntities();
 	void RegenerateEntities();
-	void KillEntity(T* entity);
-	T* GetRandomEntity();
-	T* ClosestToThePoint(float posX, float posY);
 };
 

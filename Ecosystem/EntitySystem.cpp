@@ -57,6 +57,14 @@ void EntitySystem<T>::KillEntity(T* entity)
 }
 
 template<class T>
+void EntitySystem<T>::ClearTargets(Entity* target)
+{
+	for (T* entity : m_entities) {
+		entity->ClearTarget(target);
+	}
+}
+
+template<class T>
 T* EntitySystem<T>::GetRandomEntity()
 {
 	if (m_entities.size() <= 0) { return nullptr; }
@@ -65,26 +73,27 @@ T* EntitySystem<T>::GetRandomEntity()
 }
 
 template<class T>
-T* EntitySystem<T>::ClosestToThePoint(float posX, float posY)
+T* EntitySystem<T>::ClosestToThePoint(Entity* fromEntity)
 {
-	auto m_entitiesIterator = m_entities.begin();
-	T* tempEntity = nullptr;
+	T* returnEntity = nullptr;
 	float currentDistance = 1000;
 
-	while (m_entitiesIterator != m_entities.end()) {
-		m_entitiesIterator++;
+	for (T* entity :m_entities) {
+		float diffX = entity->GetXPos() - fromEntity->GetXPos() ;
+		float diffY = entity->GetYPos() - fromEntity->GetYPos();
 
-		float diffX = posX - tempEntity->GetXPos();
-		float diffY = posY - tempEntity->GetYPos();
-		float tempCurrentDistance = std::sqrt(diffX * diffX + diffY * diffY);
+		float tempCurrentDistance = std::sqrt((diffX * diffX) + (diffY * diffY));
+
 		if (currentDistance > tempCurrentDistance) {
-			tempEntity = *m_entitiesIterator;
+			returnEntity = entity;
+			currentDistance = tempCurrentDistance;
 		}
 	}
 
-	return *m_entitiesIterator;
+	return returnEntity;
 }
 
 template EntitySystem<Plant>;
 template EntitySystem<Rabbit>;
 template EntitySystem<Fox>;
+template EntitySystem<Animal>;
