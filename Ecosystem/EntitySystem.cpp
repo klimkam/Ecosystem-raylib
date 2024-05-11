@@ -2,11 +2,6 @@
 #include<ostream>
 
 template<class T>
-EntitySystem<T>::EntitySystem()
-{
-}
-
-template<class T>
 EntitySystem<T>::EntitySystem(int minStartEntityCount, int maxStartEntityCount, int minimalEntityCount, int regenerateEntityCount, Texture2D* textureAtlas)
 {
 	m_minStartEntityCount = minStartEntityCount;

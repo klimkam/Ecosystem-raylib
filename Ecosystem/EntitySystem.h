@@ -21,7 +21,6 @@ class EntitySystem
 	int m_regenerateEntityCount = 7;
 
 public:
-	EntitySystem();
 	EntitySystem(int minStartEntityCount, int maxStartEntityCount, int minimalEntityCount, int regenerateEntityCount, Texture2D* textureAtlas);
 	void Start();
 	void Update();
