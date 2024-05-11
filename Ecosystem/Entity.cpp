@@ -3,18 +3,20 @@
 Entity::Entity()
 {
 	SetId();
-	Start();
 }
 
 Entity::Entity(Texture2D* atlas)
 {
 	m_atlas = atlas;
 	SetId();
-	Start();
 }
 
 void Entity::Start()
 {
+	m_currentSprite = GetRandomValue(0, (*m_atlas).width / m_textureWidth);
+
+	m_positionX = GetRandomValue(m_textureWidth, GetScreenWidth() - m_textureWidth);
+	m_positionY = GetRandomValue(m_textureWidth, GetScreenHeight() - m_textureWidth);
 }
 
 void Entity::Update()

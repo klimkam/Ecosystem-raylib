@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Plant.h"
 #include "EntitySystem.h"
+#include "Animal.h"
 class Screen
 {
 

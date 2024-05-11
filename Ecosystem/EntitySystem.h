@@ -3,6 +3,7 @@
 #include "raylib.h"
 #include <list>
 #include "Plant.h"
+#include "Animal.h"
 #include <iostream>
 
 template<class T>

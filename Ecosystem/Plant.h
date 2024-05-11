@@ -4,6 +4,5 @@ class Plant : public Entity
 {
 public:
 	Plant(Texture2D* texture);
-	void Start() override;
 };
 
