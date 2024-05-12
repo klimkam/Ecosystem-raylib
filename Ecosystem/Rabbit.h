@@ -5,7 +5,7 @@ class Rabbit :public Animal
 {
 	std::list<Entity*> m_huntedBy;
 	void RunAway() override;
-
+	void WakeUp() override;
 
 public:
 	Rabbit(Texture2D* texture);

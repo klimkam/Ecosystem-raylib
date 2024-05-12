@@ -9,6 +9,17 @@ void Rabbit::RunAway()
 
 }
 
+void Rabbit::WakeUp()
+{
+	m_fatigueSpeed /= -3;
+	m_isSleeping = false;
+	if (m_huntedBy.size() > 0) {
+		m_animalStatus = E_AnimalStatus::RunningAway;
+		return;
+	}
+	m_animalStatus = E_AnimalStatus::SearchingFood;
+}
+
 Rabbit::Rabbit(Texture2D* texture)
 {
 	m_atlas = texture;

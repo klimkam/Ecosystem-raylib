@@ -63,9 +63,10 @@ void Fox::FellAsleep()
 	m_animalStatus = E_AnimalStatus::Sleeping;
 	m_fatigueSpeed *= -3;
 	m_isSleeping = true;
-	ClearTarget(m_target);
 
 	if (m_target != nullptr) {
-		m_target->ClearTarget(this);
+		((Rabbit*)m_target)->ClearHuntedBy(this);
 	}
+	ClearTarget(m_target);
+
 }

@@ -38,7 +38,7 @@ private:
 	void virtual CheckCollision();
 	void virtual RunAway();
 	void virtual FellAsleep();
-	void WakeUp();
+	void virtual WakeUp();
 	std::string const GetCurrentStatus();
 };
 
